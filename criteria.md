@@ -56,6 +56,7 @@ in at least 4 of 5 tries.
 ---
 
 ## 4. Something about your chunks
+Chunks should be ~700 characters with ~100 overlap. 
 
 <!-- YOU WRITE THIS ONE.
 
@@ -72,12 +73,13 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
+With Claude assistance, each section on average has about 293 characters with one section highest char count of 711. Retrieving chunks of around 700 w/ 100 overlap ensures that the whole section is read along with other partial sections for context. This will help ensure that there's enough relevant information to answer a query. 
 
 
 ---
 
 ## 5. Your choice
+For 4 of 5 questions, the answer can be found in the source document listed.
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -90,7 +92,7 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
+Ensures that what the system outputs matches it's grounded information. 
 
 
 ---
