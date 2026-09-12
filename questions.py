@@ -27,7 +27,7 @@ QUESTIONS = [
     {"question": "Should I expect to pay using card or cash when visting these cities", "expects": "card or cash"},
     {"question": "What are the most popular tourist attractions in each city?", "expects": "tourist attractions"},
     {"question": "Are there any museums in the city that are free to visit?", "expects": "free museums"},
-    {"question": "What is the typical weather like in these cities during summer?", "expects": "summer weather"},
+    {"question": "Which is the largest country that can fit the total population of Marchwood and Corry?", "expects": "Irrevelant question, can't answer based from docs"}, #throw in an irrevalnt question
 ]
 
 # Questions from a different world entirely. Your gate should refuse all five.
