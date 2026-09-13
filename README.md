@@ -110,7 +110,7 @@ year-round.
 Based on the provided documents, **Thornby Wells** is described as the region's most accessible town on foot, with flat, formal gardens and level streets (from `guide_walking.md`). It is also noted as the easiest town in the region for limited mobility, being flat, compact, with level pump rooms and gardens (from `guide_accessibility.md`).
 ```
 
-**My relevance cutoff:**
+**My relevance cutoff: .75**
 
 <!-- The number you set in config.py, and how you got there.
 
@@ -123,7 +123,7 @@ Based on the provided documents, **Thornby Wells** is described as the region's 
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+|  "Which town has the flattest area that makes it easy to explore with someone in a wheelchair?" | yes | 0.533 |
 
 ## How I Used AI
 
@@ -137,8 +137,10 @@ Based on the provided documents, **Thornby Wells** is described as the region's 
      Milestone 5. -->
 
 **1.**
+To help come up with a chunking strategy for the city guides, I had Claude help analyze the stats of the city guide documents such as finding the min, average, and max section length. This helped me figure out the best chunking size to ensure it was able to accomodate the largest section without being too large. 
 
 **2.**
+Claude assisted in implenting the chunking function based on my discussion with it in determining the best approach to splitting the sections for the city guides. I had to configure the chunk size and overlap to ensure the chunks were more fitted for precise answers.
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
