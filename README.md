@@ -1,20 +1,8 @@
 # The Unofficial Guide
 
-<!-- Replace this line with your name and which corpus you picked. -->
+Stephany L. - 🏙️ City Guides 🗺️
 
-> **This file is your submission.** Fill it in as you go — most sections get
-> written during the milestone that produces them, not at the end.
->
-> How the starter works, and every command you'll need, is in `RUNNING.md`.
-> Leave that file alone.
->
-> **Paste everything as text.** No screenshots, no video. A typed table gets
-> full credit; a picture of the same table gets none, because the grader can't
-> read it.
->
-> Delete these instruction blocks as you replace them. The `<!-- -->` comments
-> are notes to you and don't show up when the page renders — you can leave them
-> or remove them.
+
 
 ---
 
@@ -28,10 +16,17 @@
 
      Milestone 5. -->
 
+This Unofficial guide focuses on answering questions based on the `city_guide` corpus. This system provides informational or facutal answers to city travel related questions such as sites to see, weather, population size, acessibility, foods to eat, and payment expectation. 
+
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size: 750**
+
+The longest char count of a section is 712 so to encompass this, I lowered the original chunk size from 800 to 750 for a closer fit.
+
+**Overlap: 100**
+
+Since I already have the doc title and section headers associated with each chunk, I don't need to rely on too much overlap to get context that may blend different city information together. 
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
@@ -54,29 +49,52 @@
 
      Milestone 3. -->
 
-**Chunk 1** — source: `` — produced by: ``
+**Chunk 1** — source: `` — produced by: chunker.py::split_documents``
 
 ```
+Getting around the region with limited mobility
+
+An honest assessment rather than a promotional one. Some of these places are
+difficult and it is better to know in advance
 ```
 
-**Chunk 2** — source: `` — produced by: ``
+**Chunk 2** — source: `` — produced by:chunker.py::split_documents ``
 
 ```
+Corry Vale — Where to stay
+
+Perhaps thirty beds in the entire valley, spread across two pubs and a handful of farmhouse rooms. In summer these are booked months ahead. Camping is permitted on two marked fields and nowhere else.
 ```
 
-**Chunk 3** — source: `` — produced by: ``
+**Chunk 3** — source: `` — produced by:chunker.py::split_documents ``
 
 ```
+Givens Mill — Eat and drink
+
+A tearoom attached to the mill, open 10 to 4 daily except Tuesdays, which sells bread made from the flour ground twenty metres away and is the reason most people come. One pub, food served lunchtimes and Thursday to Saturday evenings.
 ```
 
-**Chunk 4** — source: `` — produced by: ``
+**Chunk 4** — source: `` — produced by: chunker.py::split_documents``
 
 ```
+Kestrelford — When to go
+
+Late spring and early autumn. The Saturday market runs year-round but is much reduced from November to February. August is busy with walkers. The single-track approach road is genuinely difficult in snow and the town can be cut off for a day or two most winters.
 ```
 
-**Chunk 5** — source: `` — produced by: ``
+**Chunk 5** — source: `` — produced by: chunker.py::split_documents``
 
 ```
+Getting around the region — Buses
+
+Three operators run in the region and they do not accept each other's tickets,
+which is the single most common source of confusion for visitors. Services
+concentrate on weekday daytimes. Sunday service is minimal to non-existent
+outside the Brightwater town routes.
+
+The Kestrelford service is hourly on weekdays, two-hourly on Saturdays, and
+does not run on Sundays. The Halden Bay coast service runs four times daily
+year-round.
 ```
 
 ## Sample Answer
@@ -84,11 +102,12 @@
 <!-- One complete question and answer, pasted as text, with the source line
      visible. Milestone 4. -->
 
-**Question:**
+**Question:** "Which town has the flattest area that makes it easy to explore with someone in a wheelchair?"
 
 **Answer:**
 
 ```
+Based on the provided documents, **Thornby Wells** is described as the region's most accessible town on foot, with flat, formal gardens and level streets (from `guide_walking.md`). It is also noted as the easiest town in the region for limited mobility, being flat, compact, with level pump rooms and gardens (from `guide_accessibility.md`).
 ```
 
 **My relevance cutoff:**
