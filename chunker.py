@@ -22,6 +22,7 @@ to it, write down what you saw, and move on. That's a real observation about
 your pipeline, not giving up.
 """
 
+import re
 from dataclasses import dataclass
 
 import config
@@ -80,24 +81,92 @@ def fallback_split(
     return chunks
 
 
+# A title is "# Brightwater"; a section is "## Getting there". The `\s+` after
+# the hashes is what keeps the two apart — a second `#` is not whitespace, so
+# the title pattern can't match a section heading.
+_TITLE_RE = re.compile(r"^#\s+(.+)$", re.MULTILINE)
+_HEADING_RE = re.compile(r"^##\s+(.+)$", re.MULTILINE)
+
+
+def _parse_sections(text: str) -> tuple[str, list[tuple[str, str]]]:
+    """
+    Break one guide into its title and its `##` sections.
+
+    Returns the document title and a list of (heading, body) pairs. Anything
+    sitting between the title and the first heading comes back with an empty
+    heading, so the intro paragraph in guide_accessibility.md isn't dropped.
+    """
+    title_match = _TITLE_RE.search(text)
+    title = title_match.group(1).strip() if title_match else ""
+    start = title_match.end() if title_match else 0
+
+    headings = list(_HEADING_RE.finditer(text, start))
+    sections: list[tuple[str, str]] = []
+
+    intro = text[start : headings[0].start() if headings else len(text)].strip()
+    if intro:
+        sections.append(("", intro))
+
+    for i, match in enumerate(headings):
+        end = headings[i + 1].start() if i + 1 < len(headings) else len(text)
+        body = text[match.end() : end].strip()
+        if body:
+            sections.append((match.group(1).strip(), body))
+
+    # Catch sections w/ neither headings nor a body under
+    # its title by indexing it whole and with no prefix.
+    if not sections:
+        return "", [("", text.strip())]
+
+    return title, sections
+
+
 def split_documents(documents: list[Document]) -> list[Chunk]:
     """
-    Split documents into chunks. ⚠️ REPLACE THE BODY OF THIS IN MILESTONE 3.
+    Split each guide on its `##` headings — one section per chunk.
 
-    Right now it just calls the fallback. That is the plain, generic behaviour
-    the brief is talking about.
-
-    When you write your own strategy, set `produced_by` to
-    "chunker.py::split_documents" so your README's Sample Chunks section names
-    the right function. `app.py chunks` prints that string for you.
-
-    Things worth thinking about before you write any code:
-      - Are your documents short posts or long guides?
-      - Is the useful information in one sentence, or spread over a paragraph?
-      - Would splitting on paragraph breaks keep more thoughts intact than
-        splitting on a character count?
+    Written for the city_guides corpus, whose documents are markdown guides
+    with a `# Town` title and topical `## ` sections running 24 to 712
+    characters.
     """
-    return fallback_split(documents)
+    chunks: list[Chunk] = []
+
+    for doc in documents:
+        title, sections = _parse_sections(doc.text)
+        index = 0
+
+        for heading, body in sections:
+            prefix = " — ".join(part for part in (title, heading) if part)
+            header = f"{prefix}\n\n" if prefix else ""
+
+            if len(header) + len(body) <= config.CHUNK_SIZE:
+                bodies = [body]
+            else:
+                # Every piece carries the prefix, so the window has to leave
+                # room for it.
+                window = max(
+                    config.CHUNK_SIZE - len(header), config.CHUNK_OVERLAP + 1
+                )
+                bodies = [
+                    piece.text
+                    for piece in fallback_split(
+                        [Document(source=doc.source, text=body)],
+                        chunk_size=window,
+                    )
+                ]
+
+            for piece in bodies:
+                chunks.append(
+                    Chunk(
+                        text=f"{header}{piece}",
+                        source=doc.source,
+                        index=index,
+                        produced_by="chunker.py::split_documents",
+                    )
+                )
+                index += 1
+
+    return chunks
 
 
 def describe(chunks: list[Chunk]) -> str:
