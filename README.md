@@ -169,7 +169,7 @@ Claude assisted in implenting the chunking function based on my discussion with 
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 3/5 | 2/5 | 3/5 | MISSED |
 | 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
 | 3. Gate stops out-of-corpus questions | 4 of 5 | 4/5  | 4/5  | 4/5 | MET  |
 | 4. Chunks should be ~700 characters with ~100 overlap. | 1/5| 1/5 | 1/5 | 1/5 |MISSED |
@@ -178,6 +178,22 @@ Claude assisted in implenting the chunking function based on my discussion with 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
+
+**Criterion 1**- scored by scorer.py::retrieval_hit, which checks whether the expects phrase appears in any retrieved chunk. From the before log:
+
+
+| Which town have the flattest paths that would be suitable to explore with someone in a wheelchair? | pass | pass | pass 
+
+| Should I expect to pay using card or cash when visiting these cities? | fail | fail | fail 
+
+| Which cities have the best buildings that are free and open to the public like museums or churches? | fail | fail | fail 
+
+| When's the best month to visit Brightwater when's the weather is good and is not too busy? | pass | pass | pass 
+
+| Which is the largest country that can fit the total population of Marchwood and Corry? | pass | fail | pass 
+
+**Criterion 2** — read off the answers in the before log, produced by generate.py::answer_from_chunks. Every one of the fifteen names a file:
+
 
 ## Verdicts
 
