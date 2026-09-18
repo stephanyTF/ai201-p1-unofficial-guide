@@ -172,8 +172,8 @@ Claude assisted in implenting the chunking function based on my discussion with 
 | 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
 | 2. Every answer names a source | 5 of 5 |  |  |  |  |
 | 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 4. Chunks should be ~700 characters with ~100 overlap. | | | | | |
+| 5. For 4 of 5 questions, the answer can be found in the source document listed. | | | | | |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
