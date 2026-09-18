@@ -53,8 +53,7 @@ Helps safeguards the system output from answering irrevelant questions or provid
 
 ---
 
-## 4. Something about your chunks
-Chunks should be ~700 characters with ~100 overlap. 
+## 4. Chunks should be ~700 characters with ~100 overlap. 
 
 <!-- YOU WRITE THIS ONE.
 
@@ -76,8 +75,7 @@ With Claude assistance, each section on average has about 293 characters with on
 
 ---
 
-## 5. Your choice
-For 4 of 5 questions, the answer can be found in the source document listed.
+## 5. For 4 of 5 questions, the answer can be found in the source document listed.
 
 <!-- YOU WRITE THIS ONE TOO.
 
