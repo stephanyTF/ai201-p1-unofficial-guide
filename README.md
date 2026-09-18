@@ -171,7 +171,7 @@ Claude assisted in implenting the chunking function based on my discussion with 
 |---|---|---|---|---|---|
 | 1. Retrieved chunk contains the answer | 4 of 5 | 3/5 | 2/5 | 3/5 | MISSED |
 | 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
-| 3. Gate stops out-of-corpus questions | 4 of 5 | 4/5  | 4/5  | 4/5 | MET  |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5  | 5/5  | 5/5 | MET  |
 | 4. Chunks should be ~700 characters with ~100 overlap. | 1/5| 1/5 | 1/5 | 1/5 |MISSED |
 | 5. For 4 of 5 questions, the answer can be found in the source document listed. | 4/5 | 4/5 | 4/5 | 4/5 | MET |
 
@@ -193,6 +193,45 @@ Claude assisted in implenting the chunking function based on my discussion with 
 | Which is the largest country that can fit the total population of Marchwood and Corry? | pass | fail | pass 
 
 **Criterion 2** — read off the answers in the before log, produced by generate.py::answer_from_chunks. Every one of the fifteen names a file:
+
+```
+Based on the provided documents, **Thornby Wells** has flat, formal gardens and level streets, making it the region's most accessible town on foot. 
+
+Source: `guide_walking.md`
+```
+
+Criterion 3 — run_eval.py::check_out_of_scope, straight from the before log:
+| Out-of-scope question | Best distance | Gate |
+|---|---|---|
+| What is the capital of Mongolia? | 0.808 | refused |
+| How do I change the oil in a diesel engine? | 0.881 | refused |
+| Who won the 1994 World Cup? | 0.982 | refused |
+| What is the recommended dosage of ibuprofen for a headache? | 0.835 | refused |
+| How do I write a for loop in Rust? | 0.859 | refused |
+
+
+Criterion 4 — The 14th Chunk out of the 15th chunks from chunker.py::split_documents has the most chars (479) while most other sections are around 300 chars
+```
+Getting around the region — Walking and cycling
+
+The river path from Brightwater runs four miles upstream on a good surface. The
+old railway trackbed from Kestrelford runs six miles on an easy gradient and is
+the best walking in the region for the effort involved. The coastal path from
+Halden Bay is more serious — exposed, and closed in high wind.
+
+Cycling is pleasant on the river path and the trackbed, and unpleasant on Mill
+Road and the coast road, neither of which has a shoulder.
+```
+
+**Criterion 5 —** Read manually against the sources the log says were retrieved. Four of five answers stay inside their documents. The fifth shouldn't have answers because it's an out of scope question. :
+
+```
+Cards are accepted almost everywhere, though cash is still useful at the market and in smaller places. 
+
+This information is the same across all provided documents, including `guide_kestrelford.md`, `guide_corry_vale.md`, `guide_halden_bay.md`, `guide_marchwood.md`, `guide_brightwater.md`, `guide_pellew_sands.md`, `guide_givens_mill.md`, and `guide_elder_ness.md`.
+
+```
+
 
 
 ## Verdicts
