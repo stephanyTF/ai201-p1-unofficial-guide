@@ -223,12 +223,12 @@ Cycling is pleasant on the river path and the trackbed, and unpleasant on Mill
 Road and the coast road, neither of which has a shoulder.
 ```
 
-**Criterion 5 —** Read manually against the sources the log says were retrieved. Four of five answers stay inside their documents. The fifth shouldn't have answers because it's an out of scope question. :
+**Criterion 5 —** Read manually against the sources the log says were retrieved. 2 of five answers stay inside their documents. 2 others have answers in the listed sources but 1 question about cash/card was marked failed when it should have been pass while the other question about building sight sees in each town have answers in the listed docs but the llm is not confident. The fifth shouldn't have answers because it's an out of scope question. :
 
 ```
-Cards are accepted almost everywhere, though cash is still useful at the market and in smaller places. 
+Question: ### Which cities have the best buildings that are free and open to the public like museums or churches? — run 2
 
-This information is the same across all provided documents, including `guide_kestrelford.md`, `guide_corry_vale.md`, `guide_halden_bay.md`, `guide_marchwood.md`, `guide_brightwater.md`, `guide_pellew_sands.md`, `guide_givens_mill.md`, and `guide_elder_ness.md`.
+I do not have enough information to answer which cities have the best buildings that are free and open to the public, as the documents do not compare the quality of the buildings across cities or state which ones are free, other than mentioning that the city museum in Marchwood is free (guide_marchwood.md).
 
 ```
 
@@ -247,11 +247,11 @@ This information is the same across all provided documents, including `guide_kes
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 | Retrieved chunks contain the answer | MISSED | 3/5 on 2 runs and 2/5 for 1 run |
+| 2 | Every answer names a source | MET | All fifteen answers name at least one file.|
+| 3 |The relevance gate stops out-of-corpus questions  | MET  | 5 of 5 refused, worst distance 0.982 against a 0.75 cutoff. Target was 4 of 5. |
+| 4 | Chunks should be ~700 characters with ~100 overlap. | MISSED | Most of the chunks from the 15 sample was around 200-300 and only stopped at sections. |
+| 5 | For 4 of 5 questions, the answer can be found in the source document listed. | MET  | 4/5 against target of 4/5. There's only one question that failed only 1/3 runs, "best building" question, which may be more of a system error or question framing.|
 
 ## Diagnoses
 
