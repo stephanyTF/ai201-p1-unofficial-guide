@@ -325,13 +325,13 @@ Q#3 issue is at the generation stage. Q3 gets a false pass with the original Cri
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. Chunks should have file and section titles (if applicable) with concise and contained topics (no cut off sentences.) | | | | | |
-| 5. For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 2/5 | 2/5  | 2/5  | MISSED |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Chunks should have file and section titles (if applicable) with concise and contained topics (no cut off sentences.) |  5/5 | 5/5 | 5/5 | 5/5 |MET |
+| 5. For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed. | 4/5| 5/5 |5/5 |MET | |
 
-**Did it help?**
+
 
 <!-- Say plainly whether it did, and how you know. If it made things worse,
      say that — a change that backfired, honestly reported, earns full credit
@@ -339,6 +339,19 @@ Q#3 issue is at the generation stage. Q3 gets a false pass with the original Cri
      tell.
 
      Milestone 4. -->
+
+*Before
+```
+I do not have enough information to answer which cities have the best buildings that are free and open to the public, as the documents do not compare the quality of the buildings across cities or state which ones are free, other than mentioning that the city museum in Marchwood is free (guide_marchwood.md).
+```
+
+
+*After
+```
+I can't say what's best since I don't have access to ratings or reviews, but based on the knowledge I have, here's what I can provide ... Marchwood features a city museum that is free and genuinely excellent (guide_marchwood.md). Additionally, Brightwater has a mill building that is now a museum and a small 14th-century cathedral (guide_brightwater.md), and Kestrelford has a parish church with a tower you can climb (guide_kestrelford.md).
+```
+**Did it help?**
+
 
 ## What's Still Broken
 
