@@ -328,8 +328,8 @@ Q#3 issue is at the generation stage. Q3 gets a false pass with the original Cri
 | 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
 | 2. Every answer names a source | 5 of 5 |  |  |  |  |
 | 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 4. Chunks should have file and section titles (if applicable) with concise and contained topics (no cut off sentences.) | | | | | |
+| 5. For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed. | | | | | |
 
 **Did it help?**
 
