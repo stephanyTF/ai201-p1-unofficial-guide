@@ -295,11 +295,15 @@ Criterian 1- Retrieved chunks contain the answer
 Criterian 4- Retrieved chunks contain the answer
  - Nothing wrong with the chunk strategy for the revised critieria. The only fault was poor wording and thought process of the previous criteria that was not significant and not able to test. 
 
-*What Criteria I would ACTUALLY revisit:
-Criterian 5- 
-- Original: For 4 of 5 questions, the answer can be found in the source document listed.
+*What Criteria I would ACTUALLY revisit: (Criterian 5)
 
-- Revised: For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed.
+     - Original: For 4 of 5 questions, the answer can be found in the source document listed.
+
+     - Revised: For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed.
+
+Question #3: Which cities have the best buildings that are free and open to the public like museums or churches?
+
+Q#3 issue is at the generation stage. Q3 gets a false pass with the original Criteria#5 since the answer to the question are in the docs listed but the wording of the answer is inconsistent by staring with, "I do not have enough information to ..." 2 times out of the 3 runs while the other states by answering confidently. Questions that involve opinions like "the best" can throw the answer off and thus needs to be standardize to be more consistent
 
 
 
