@@ -363,6 +363,13 @@ The first sentence of the response is more clear and transitions smoother into t
 
      Milestone 5. -->
 
+**1. Retrieved chunk contains the answer** - Through manual check, the system worksk as expected. I would need to check the how the scorer works for each question but since it separate from the rag model, it's out of scope. 
+
+**5. For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed.** - The new grounding prompting needs to be tweaked to ensure it can be applied correctly to a variety of questions specifically dealing with opinionated questions.  Not all opinionated questions should be treated the same.
+
+For example the question: "When's the best month to visit Brightwater when's the weather is good and is not too busy?", already have the "best months" stated in `guide_brightwater.md so the answer should be confident and not have to say, " they can't say whats 'best'."
+
+Due to limted time there was not a lot of testing to ensure the grounded prompting worked.
 
 
 ## What I'd Do Differently
@@ -371,3 +378,7 @@ The first sentence of the response is more clear and transitions smoother into t
      differently, and why?
 
      Milestone 5. -->
+
+**5. For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed.** - The new grounding prompting needs to be tweaked and tested to ensure it can be applied correctly to a variety of questions. 
+
+3 more test runs are needed after the change with another diverse set of 5 questions to specifically test the "opionated" type of questions. 
