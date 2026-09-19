@@ -253,6 +253,20 @@ I do not have enough information to answer which cities have the best buildings 
 | 4 | Chunks should be ~700 characters with ~100 overlap. | MISSED | Most of the chunks from the 15 sample was around 200-300 and only stopped at sections. |
 | 5 | For 4 of 5 questions, the answer can be found in the source document listed. | MET  | 4/5 against target of 4/5. There's only one question that failed only 1/3 runs, "best building" question, which may be more of a system error or question framing.|
 
+Original: Chunks should be ~700 characters with ~100 overlap. 
+
+Revised: Chunks should have file and section titles (if applicable) with concise and contained topics (no cut off sentences.)
+
+Why: The original should have said max 750ish chars since the largest section was a low 700. Yet there's no way of testing that since the chunks that were used to answer a question are not visible. Overlap was not useful since the chunker was already dividing by sections which would keep the information more concise and not mixed. 
+
+
+Original: For 4 of 5 questions, the answer can be found in the source document listed.
+
+Revised: For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed.
+
+Why: Gemini model seems to be a little too strict on  matching the question with answers and can't reason if it's close enough. For instance for opinionated questions that may include "whats the best place", Gemini will avoid ranking the place if it's not mentioned in the docs which is fair but then misleads in its answer by saying it doesn't know eventhough it does contain answers that would be useful to the user. 
+
+
 ## Diagnoses
 
 <!-- For each miss: which stage caused it, and how. The stage alone isn't
@@ -273,11 +287,22 @@ I do not have enough information to answer which cities have the best buildings 
 
      Milestone 3. -->
 
-Original: Chunks should be ~700 characters with ~100 overlap. 
+*False misses- Missed criteria that doesn't accurately reflect the chunking strategy robustness
 
-Revised: Chunks should have file and section titles (if applicable) with concise and contained topics (no cut off sentences.)
+Criterian 1- Retrieved chunks contain the answer
+- No change in chunk strategy, the issue may be the "expectation" in the questions doc. 
 
-Why: The original should have said max 750ish chars since the largest section was a low 700. Yet there's no way of testing that since the chunks that were used to answer a question are not visible. Overlap was not useful since the chunker was already dividing by sections which would keep the information more concise and not mixed. 
+Criterian 4- Retrieved chunks contain the answer
+ - Nothing wrong with the chunk strategy for the revised critieria. The only fault was poor wording and thought process of the previous criteria that was not significant and not able to test. 
+
+*What Criteria I would ACTUALLY revisit:
+Criterian 5- 
+- Original: For 4 of 5 questions, the answer can be found in the source document listed.
+
+- Revised: For 4 of 5 questions, the way the question is answered should reflect accurately on what's found in the source document listed.
+
+
+
 
 
 ## The Improvement
