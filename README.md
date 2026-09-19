@@ -273,6 +273,13 @@ I do not have enough information to answer which cities have the best buildings 
 
      Milestone 3. -->
 
+Original: Chunks should be ~700 characters with ~100 overlap. 
+
+Revised: Chunks should have file and section titles (if applicable) with concise and contained topics (no cut off sentences.)
+
+Why: The original should have said max 750ish chars since the largest section was a low 700. Yet there's no way of testing that since the chunks that were used to answer a question are not visible. Overlap was not useful since the chunker was already dividing by sections which would keep the information more concise and not mixed. 
+
+
 ## The Improvement
 
 **What I changed:**
