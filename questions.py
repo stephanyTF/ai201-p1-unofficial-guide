@@ -24,7 +24,7 @@ names a target of "4 of 5", and four of three is not a thing.
 QUESTIONS = [
     # {"question": "...", "expects": "..."},
     {"question": "Which town have the flattest paths that would be suitable to explore with someone in a wheelchair?", "expects": "Thornby Wells"},
-    {"question": "Should I expect to pay using card or cash when visiting these cities?", "expects": "card and cash is usefull and"},
+    {"question": "Should I expect to pay using card or cash when visiting these cities?", "expects": "cash"},
     {"question": "Which cities have the best buildings that are free and open to the public like museums or churches?", "expects": "city museum in Marchwood or pump room in Thornby Wells"},
     {"question": "When's the best month to visit Brightwater when's the weather is good and is not too busy?", "expects": "May and June"},
     {"question": "Which is the largest country that can fit the total population of Marchwood and Corry?", "expects": "I do not have enough information to answer this question."}, #throw in an irrevalnt question
