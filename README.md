@@ -311,9 +311,9 @@ Q#3 issue is at the generation stage. Q3 gets a false pass with the original Cri
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** Added instructions on how to handle opinionated questions in the grounding instruction of the generate.py file.
 
-**Why I picked it:**
+**Why I picked it:**: Increase better robust performance in answering different question formats.
 
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
@@ -351,7 +351,7 @@ I do not have enough information to answer which cities have the best buildings 
 I can't say what's best since I don't have access to ratings or reviews, but based on the knowledge I have, here's what I can provide ... Marchwood features a city museum that is free and genuinely excellent (guide_marchwood.md). Additionally, Brightwater has a mill building that is now a museum and a small 14th-century cathedral (guide_brightwater.md), and Kestrelford has a parish church with a tower you can climb (guide_kestrelford.md).
 ```
 **Did it help?**
-The first sentence of the response is more clear and transitions smoother into the answer that's supported by the documents. For this type of question, the answer always start the same on all 3 runs however, even this sentence starter bleeds into its answer into 2 other type of questions (1/3) for the accessibility question and seasonal visit question (3/3) runs. 
+The changed helped a little but needs more improvement. The first sentence of the response is more clear and transitions smoother into the answer that's supported by the documents. For this type of question, the answer always start the same on all 3 runs however, even this sentence starter bleeds into its answer into 2 other type of questions (1/3) for the accessibility question and seasonal visit question (3/3) runs. 
 
 ## What's Still Broken
 
